@@ -1,0 +1,261 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+  --color-paper: #f4f1ea;
+  --color-ink: #121417;
+  --color-accent: #d6f25c;
+  --color-background: #f4f1ea;
+  --color-foreground: #121417;
+  --color-muted: #e6e1d6;
+  --color-muted-foreground: #5c615c;
+  --color-primary: #121417;
+  --color-primary-foreground: #f4f1ea;
+  --color-border: #d9d3c7;
+}
+
+:root {
+  --sq-accent: #121417;
+  --sq-accent-foreground: #f4f1ea;
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  overflow-x: clip;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-ink);
+}
+
+.theatre {
+  background: var(--color-ink);
+  color: var(--color-paper);
+  --color-foreground: #f4f1ea;
+  --color-muted-foreground: #b7b2a8;
+  --color-background: #121417;
+  --color-muted: #1c2024;
+  --sq-accent: #d6f25c;
+  --sq-accent-foreground: #121417;
+}
+
+.opening-portal [data-gp-pin] {
+  background-color: #05051f;
+  background-image:
+    linear-gradient(rgb(255 255 255 / 0.46), rgb(255 255 255 / 0.46)),
+    url("./assets/land-open.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.opening-portal [data-gp-caption] {
+  display: none;
+}
+
+.opening-portal [data-gp-content] {
+  background: #f4f1ea !important;
+  color: #121417 !important;
+}
+
+.brand-mark {
+  position: relative;
+  display: inline-flex;
+  width: 3.4rem;
+  height: 2.75rem;
+  overflow: hidden;
+  flex: none;
+  border-radius: 0.45rem;
+}
+
+.brand-mark img {
+  position: absolute;
+  width: 7.65rem;
+  max-width: none;
+  height: auto;
+  left: -2.66rem;
+  top: -0.92rem;
+}
+
+.shooting-star {
+  position: absolute;
+  z-index: 2;
+  width: 7.5rem;
+  height: 2px;
+  pointer-events: none;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(255, 176, 72, 0.2), #ffb048 72%, #fff);
+  filter: drop-shadow(0 0 6px rgba(255, 186, 72, 0.95));
+  animation: shooting-star 1.15s ease-in forwards;
+}
+
+@keyframes shooting-star {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) rotate(var(--star-angle));
+  }
+
+  14% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--star-x), var(--star-y), 0) rotate(var(--star-angle));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shooting-star {
+    display: none;
+  }
+}
+
+.opening-kicker {
+  position: absolute;
+  right: 1.5rem;
+  left: 1.5rem;
+  bottom: calc(100% - var(--gp-word-top, 35%) + 1.25rem);
+  margin: 0;
+  text-align: center;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #05051f;
+}
+
+.opening-foot {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.opening-place {
+  margin: 0;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #1c241c;
+}
+
+.opening-pitch {
+  display: flex;
+  max-width: 26rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+@media (max-width: 720px) {
+  .opening-foot {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .opening-pitch {
+    max-width: none;
+    align-items: flex-end;
+    text-align: right;
+  }
+}
+
+.portal-eyebrow,
+.portal-support {
+  position: absolute;
+  right: 24px;
+  left: 24px;
+  margin: 0;
+  text-align: center;
+}
+
+.portal-eyebrow {
+  bottom: calc(100% - var(--gp-word-top, 35%) + 28px);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #1c241c;
+}
+
+.portal-support {
+  top: calc(var(--gp-word-bottom, 50%) + 28px);
+  font-size: clamp(15px, 2vw, 20px);
+  color: #243024;
+}
+
+/* Forest, with the server room held back so both read as one ground. */
+.hero-ground {
+  position: relative;
+  isolation: isolate;
+  background-color: #e7efe4;
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(244, 241, 234, 0.42) 0%,
+      rgba(244, 241, 234, 0.28) 46%,
+      rgba(244, 241, 234, 0.5) 100%
+    ),
+    url("/hero/nature.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.hero-ground::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: url("/hero/technology.jpg") 28% center / cover no-repeat;
+  opacity: 0.34;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.noise-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+@media (max-width: 640px) {
+  .portal-eyebrow {
+    font-size: 11px;
+    bottom: calc(100% - var(--gp-word-top, 35%) + 16px);
+  }
+
+  .portal-support {
+    top: calc(var(--gp-word-bottom, 50%) + 16px);
+    font-size: 14px;
+  }
+
+  [data-gp-touch-picker] {
+    display: none !important;
+  }
+}
+
+@media (max-height: 520px) {
+  .portal-support {
+    display: none;
+  }
+}
